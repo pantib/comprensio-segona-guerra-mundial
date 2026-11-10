@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Recurs educatiu de comprensió lectora sobre la Segona Guerra Mundial per a Cicle Superior de Primària. Llengua Catalana. DUA i WCAG 2.1 AA.">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>Els Trens de la Llibertat | Comprensió Lectora DUA</title>
+  
+  <style>
+    /* ==========================================================================
+       1. VARIABLES CSS I CONFIGURACIÓ DE DISSENY INCLUSIU (WCAG AA & DUA)
+       ========================================================================== */
+    :root {
+      /* Contrast cromàtic certificat (> 4.5:1 text normal, > 7:1 encapçalaments) */
+      --color-primary: #1e3a8a;        /* Blau fosc institucional */
+      --color-primary-hover: #1e40af;
+      --color-primary-light: #eff6ff;
+      --color-secondary: #0f766e;      /* Verd blavós / Teal */
+      --color-surface: #ffffff;
+      --color-bg: #f8fafc;
+      --color-text: #0f172a;           /* Negre sobre clar (> 14:1) */
+      --color-text-muted: #334155;
+      --color-border: #94a3b8;
+      --color-border-light: #cbd5e1;
+      
+      /* Colors de feedback amb suport gràfic i textual */
+      --color-success-bg: #ecfdf5;
+      --color-success-border: #059669;
+      --color-success-text: #064e3b;
+      
+      --color-error-bg: #fff1f2;
+      --color-error-border: #dc2626;
+      --color-error-text: #881337;
+      
+      --color-hint-bg: #fffbeb;
+      --color-hint-border: #d97706;
+      --color-hint-text: #78350f;
+
+      /* Anella de focus visible per defecte (WCAG 2.4.7 / 2.4.11) */
+      --focus-outline-color: #2563eb;
+      --focus-outline-width: 3px;
+      --focus-outline-offset: 3px;
+
+      /* Tipografia adaptable */
+      --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-family-accessible: "Verdana", "Trebuchet MS", "Lucida Grande", sans-serif;
+      --font-current: var(--font-family-base);
+      
+      --font-scale: 1; /* 1 = 100%, 1.15 = 115%, 1.3 = 130% */
+      --base-font-size: 1.05rem;
+      --line-height-base: 1.65;
+      --letter-spacing-base: 0.01em;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Mode Contrast Alt (WCAG AAA) */
+    body.high-contrast {
+      --color-primary: #000000;
+      --color-primary-hover: #1e293b;
+      --color-primary-light: #ffffff;
+      --color-surface: #ffffff;
+      --color-bg: #ffffff;
+      --color-text: #000000;
+      --color-text-muted: #1e293b;
+      --color-border: #000000;
+      --color-border-light: #000000;
+      --color-success-bg: #f0fdf4;
+      --color-success-border: #000000;
+      --color-success-text: #000000;
+      --color-error-bg: #fff1f2;
+      --color-error-border: #000000;
+      --color-error-text: #000000;
+      --color-hint-bg: #fefce8;
+      --color-hint-border: #000000;
+      --color-hint-text: #000000;
+      --focus-outline-color: #000000;
+      --focus-outline-width: 4px;
+    }
+
+    /* Mode Lletra Accessible / Dislèxia */
+    body.font-accessible {
+      --font-current: var(--font-family-accessible);
+      --letter-spacing-base: 0.04em;
+      --line-height-base: 1.85;
+    }
+
+    /* ==========================================================================
+       2. REINICI I ESTILS BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: calc(16px * var(--font-scale));
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-current);
+      font-size: var(--base-font-size);
+      line-height: var(--line-height-base);
+      letter-spacing: var(--letter-spacing-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Enllaç d'accés ràpid (Skip link) - WCAG 2.4.1 */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: #000000;
+      color: #ffffff;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      text-decoration: underline;
+      border-radius: var(--radius-sm);
+      z-index: 10000;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 1rem;
+      outline: 4px solid #facc15;
+    }
+
+    :focus-visible {
+      outline: var(--focus-outline-width) solid var(--focus-outline-color) !important;
+      outline-offset: var(--focus-outline-offset) !important;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ==========================================================================
+       3. CAPÇALERA I BARRA DUA
+       ========================================================================== */
+    .app-header {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      padding: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .topic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .app-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #ffffff;
+    }
+
+    .student-session-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Barra d'accessibilitat DUA */
+    .accessibility-bar {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--color-border-light);
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+    }
+
+    .tools-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .tools-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tools-label {
+      font-weight: 700;
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 40px;
+      min-width: 40px;
+      transition: all 0.2s ease;
+    }
+    .tool-btn:hover {
+      background-color: var(--color-primary-light);
+      border-color: var(--color-primary);
+    }
+    .tool-btn[aria-pressed="true"] {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       4. PANTALLES I CONTINGUT PRINCIPAL
+       ========================================================================== */
+    main {
+      flex: 1 0 auto;
+      padding: 2rem 0 3rem 0;
+    }
+
+    .card {
+      background-color: var(--color-surface);
+      border: 2px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.5rem;
+    }
+
+    /* PANTALLA 1: REGISTRE D'AULA SEGUR (PRIVACY-BY-DESIGN) */
+    .register-card {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .register-card h2 {
+      font-size: 1.65rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .privacy-box {
+      background-color: var(--color-primary-light);
+      border-left: 4px solid var(--color-primary);
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-text-muted);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text);
+      font-size: 1rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1.05rem;
+      font-family: inherit;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: #ffffff;
+      color: var(--color-text);
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--color-primary);
+    }
+
+    .form-hint {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .btn-primary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--color-primary);
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-primary);
+      cursor: pointer;
+      min-height: 52px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      width: 100%;
+    }
+    .btn-primary-action:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* PANTALLA 2: ESTRUCTURA LECTURA + QÜESTIONARI A DOBLE COLUMNA */
+    .reading-activity-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .reading-activity-grid {
+        grid-template-columns: 1.15fr 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Panell del text de lectura */
+    .reading-panel {
+      background-color: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .reading-header {
+      border-bottom: 2px solid var(--color-border-light);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .reading-header h2 {
+      font-size: 1.35rem;
+      color: var(--color-primary);
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+
+    .reading-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .reading-text-body p {
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      position: relative;
+    }
+
+    .para-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background-color: #e2e8f0;
+      color: var(--color-primary);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      margin-right: 0.4rem;
+      user-select: none;
+      border: 1px solid var(--color-border);
+    }
+
+    /* Paraules de vocabulari enriquides (DUA) */
+    .vocab-word {
+      background-color: #fef08a;
+      border-bottom: 2px dotted #854d0e;
+      padding: 0 0.2rem;
+      border-radius: 2px;
+      font-weight: 600;
+      cursor: help;
+    }
+
+    /* Panell del qüestionari interactiu */
+    .quiz-panel {
+      background-color: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    /* Barra de progrés */
+    .progress-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background-color: #e2e8f0;
+      border-radius: 9999px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1e40af, #0284c7);
+      width: 16%;
+      transition: width 0.3s ease;
+    }
+
+    /* Bastides d'ajuda (DUA) */
+    .scaffold-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .scaffold-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background-color: #f1f5f9;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 42px;
+    }
+    .scaffold-btn:hover {
+      background-color: #e2e8f0;
+      border-color: var(--color-primary);
+    }
+
+    .hint-box {
+      background-color: var(--color-hint-bg);
+      border: 2px solid var(--color-hint-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      color: var(--color-hint-text);
+      font-size: 0.95rem;
+      animation: fadeIn 0.25s ease;
+    }
+
+    /* Targeta de la pregunta */
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    legend.question-legend {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .question-type-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .question-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--color-text);
+    }
+
+    /* Opcions com a targetes seleccionables */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .option-item {
+      position: relative;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      border: 2px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface);
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      min-height: 54px;
+      transition: all 0.2s ease;
+    }
+    .option-label:hover {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+
+    .option-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .option-input:focus-visible + .option-label {
+      outline: var(--focus-outline-width) solid var(--focus-outline-color);
+      outline-offset: 3px;
+    }
+
+    .option-input:checked + .option-label {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #f1f5f9;
+      border: 2px solid var(--color-border);
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .option-input:checked + .option-label .option-letter {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    /* Estats de validació */
+    .option-label.is-correct {
+      background-color: var(--color-success-bg) !important;
+      border-color: var(--color-success-border) !important;
+      color: var(--color-success-text) !important;
+    }
+    .option-label.is-correct .option-letter {
+      background-color: var(--color-success-border) !important;
+      color: #ffffff !important;
+      border-color: var(--color-success-border) !important;
+    }
+
+    .option-label.is-incorrect {
+      background-color: var(--color-error-bg) !important;
+      border-color: var(--color-error-border) !important;
+      color: var(--color-error-text) !important;
+    }
+    .option-label.is-incorrect .option-letter {
+      background-color: var(--color-error-border) !important;
+      color: #ffffff !important;
+      border-color: var(--color-error-border) !important;
+    }
+
+    /* Caixa de feedback explicatiu */
+    .feedback-box {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-top: 1.25rem;
+      border: 2px solid transparent;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .feedback-box.correct {
+      background-color: var(--color-success-bg);
+      border-color: var(--color-success-border);
+      color: var(--color-success-text);
+    }
+
+    .feedback-box.incorrect {
+      background-color: var(--color-error-bg);
+      border-color: var(--color-error-border);
+      color: var(--color-error-text);
+    }
+
+    .feedback-header {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feedback-text {
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .feedback-text p {
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background-color: #ffffff;
+      color: var(--color-text);
+      border: 2px solid var(--color-border);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      min-height: 48px;
+    }
+    .btn-secondary:hover {
+      background-color: #f8fafc;
+      border-color: var(--color-primary);
+    }
+
+    /* PANTALLA 3: INFORME D'APRENENTATGE I DIPLOMA */
+    .report-card {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .diploma-frame {
+      border: 4px double var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.5rem;
+      background-color: #ffffff;
+      margin-bottom: 1.75rem;
+    }
+
+    .score-badge {
+      display: inline-block;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      padding: 0.5rem 1.8rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-primary);
+      margin: 1rem 0;
+    }
+
+    .review-item {
+      text-align: left;
+      border: 1.5px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.85rem;
+      background-color: #f8fafc;
+    }
+
+    .review-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    /* MODAL DE GLOSSARI (DUA) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 9999;
+    }
+
+    .modal-dialog {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--color-border);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.5rem;
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.3rem;
+      border-radius: 4px;
+    }
+
+    /* PEU DE PÀGINA */
+    .app-footer {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 2rem 0 1.5rem 0;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .footer-heading {
+      color: #ffffff;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .transparency-box {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 3px solid #60a5fa;
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Print styles per a l'informe */
+    @media print {
+      .app-header, .accessibility-bar, .app-footer, .scaffold-toolbar, #btn-restart, .skip-link {
+        display: none !important;
+      }
+      body {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .diploma-frame {
+        border-color: #000000;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Salta directament al contingut de lectura i preguntes</a>
+
+  <!-- CAPÇALERA -->
+  <header class="app-header" role="banner">
+    <div class="container header-content">
+      <div>
+        <span class="topic-badge">
+          <span aria-hidden="true">📖</span> Llengua Catalana · Cicle Superior de Primària
+        </span>
+        <h1 class="app-title">Els Trens de la Llibertat: Nicholas Winton</h1>
+      </div>
+      <div id="session-display" class="hidden">
+        <span class="student-session-badge">
+          <span aria-hidden="true">👤</span> <strong id="student-name-badge">Alumne</strong> (<span id="student-group-badge">Grup</span>)
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- BARRA D'EINES DUA I ACCESSIBILITAT -->
+  <section class="accessibility-bar" aria-label="Eines d'accessibilitat i suports DUA">
+    <div class="container tools-wrapper">
+      <div class="tools-group">
+        <span class="tools-label">Mida del text:</span>
+        <button type="button" class="tool-btn" id="btn-font-normal" aria-pressed="true" aria-label="Mida de text normal">A</button>
+        <button type="button" class="tool-btn" id="btn-font-large" aria-pressed="false" aria-label="Mida de text gran">A+</button>
+        <button type="button" class="tool-btn" id="btn-font-xlarge" aria-pressed="false" aria-label="Mida de text molt gran">A++</button>
+      </div>
+
+      <div class="tools-group">
+        <button type="button" class="tool-btn" id="btn-toggle-font" aria-pressed="false" title="Canvia a una lletra d'alta llegibilitat per a dislèxia">
+          <span aria-hidden="true">🔤</span> Lletra accessible
+        </button>
+        <button type="button" class="tool-btn" id="btn-toggle-contrast" aria-pressed="false" title="Activa el mode d'alt contrast">
+          <span aria-hidden="true">🌓</span> Contrast alt
+        </button>
+        <button type="button" class="tool-btn" id="btn-open-glossary" title="Obre el diccionari de paraules difícils">
+          <span aria-hidden="true">📚</span> Vocabulari
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTINGUT PRINCIPAL -->
+  <main id="main-content" tabindex="-1">
+    <div class="container">
+
+      <!-- ==========================================
+           PANTALLA 1: REGISTRE D'AULA SEGUR (RGPD)
+           ========================================== -->
+      <section id="screen-register" class="card register-card" aria-labelledby="register-heading">
+        <h2 id="register-heading">Benvinguts i benvingudes a l'activitat de comprensió lectora</h2>
+        
+        <div class="privacy-box" role="note">
+          <h3 style="color: var(--color-primary); font-size: 1rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span aria-hidden="true">🔒</span> Registre d'aula segur (Protecció de Dades - RGPD / LOPDGDD):
+          </h3>
+          <p>
+            Per identificar el teu treball a l'aula i preparar el teu <strong>informe final d'aprenentatge</strong>, si us plau registra't amb el teu <strong>nom de pila</strong> o el teu <strong>àlies d'equip</strong>.
+          </p>
+          <p style="margin-top: 0.35rem; font-size: 0.85rem;">
+            <em>Garantia de privacitat:</em> No et demanem cognoms complets, ni contrasenyes, ni adreça de correu. Les teves respostes es desen exclusivament a la memòria d'aquest dispositiu i no s'envien a cap servidor extern.
+          </p>
+        </div>
+
+        <form id="form-register" onsubmit="return false;">
+          <div class="form-group">
+            <label for="input-student-name" class="form-label">
+              El teu nom de pila o àlies d'aula <span aria-hidden="true" style="color: #dc2626;">*</span>:
+            </label>
+            <input type="text" id="input-student-name" class="form-input" placeholder="Ex: Laia, Marc G. o Equip Blau" required autocomplete="off">
+            <p class="form-hint">Escriu com vols que surti el teu nom a l'informe docent.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="select-student-group" class="form-label">
+              El teu curs o grup classe <span aria-hidden="true" style="color: #dc2626;">*</span>:
+            </label>
+            <select id="select-student-group" class="form-select" required>
+              <option value="" disabled selected>Tria el teu grup...</option>
+              <option value="5è A">5è de Primària - Grup A</option>
+              <option value="5è B">5è de Primària - Grup B</option>
+              <option value="6è A">6è de Primària - Grup A</option>
+              <option value="6è B">6è de Primària - Grup B</option>
+              <option value="Grup de Suport">Grup de Suport / Reforç</option>
+            </select>
+          </div>
+
+          <button type="submit" id="btn-submit-register" class="btn-primary-action" style="margin-top: 1rem;">
+            Entrar i començar la lectura <span aria-hidden="true">➔</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ==========================================
+           PANTALLA 2: LECTURA + QÜESTIONARI DUA
+           ========================================== -->
+      <section id="screen-activity" class="reading-activity-grid hidden" aria-label="Activitat de lectura i preguntes">
+        
+        <!-- COLUMNA 1: EL TEXT DE LECTURA (SEMPRE ACCESSIBLE PER RELECTURA) -->
+        <article class="reading-panel" aria-labelledby="reading-title">
+          <header class="reading-header">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">Lectura guiada</span>
+            <h2 id="reading-title">Els trens de la llibertat: La història de Nicholas Winton</h2>
+            <div class="reading-tools">
+              <button type="button" class="scaffold-btn" id="btn-read-text-aloud" title="Escoltar la lectura completa del text">
+                <span aria-hidden="true">🔊</span> Escoltar text
+              </button>
+            </div>
+          </header>
+
+          <div class="reading-text-body" id="reading-content">
+            <p id="para-1">
+              <span class="para-tag" aria-label="Paràgraf 1">[P1]</span>
+              A finals dels anys 30, Europa vivia moments de gran incertesa i preocupació. Abans que esclatés oficialment la Segona Guerra Mundial l'any 1939, moltes famílies, especialment les d'origen jueu i opositors al règim a països com Txecoslovàquia, patien una <span class="vocab-word" title="Persecució: maltractament i setge constant per motius d'origen o idees">persecució</span> terrible i la pèrdua constant dels seus drets bàsics. Enmig d'aquell clima de por, la gran prioritat dels pares i mares era protegir la vida i el futur dels seus fills i filles.
+            </p>
+
+            <p id="para-2">
+              <span class="para-tag" aria-label="Paràgraf 2">[P2]</span>
+              L'hivern de 1938, un jove empleat de banca britànic de vint-i-nou anys anomenat Nicholas Winton va decidir cancel·lar unes vacances d'esquí a Suïssa per viatjar a la ciutat de Praga, després que un amic li expliqués la dramàtica situació dels camps de refugiats. Quan en Nicholas va veure centenars d'infants passant fred i gana, va prendre una determinació valenta: no es podia quedar de braços plegats. Des de l'habitació d'un modest hotel, va començar a organitzar una xarxa per <span class="vocab-word" title="Evacuar: traslladar persones d'un lloc perillós a un lloc segur">evacuar</span> el màxim nombre possible de criatures cap a la Gran Bretanya.
+            </p>
+
+            <p id="para-3">
+              <span class="para-tag" aria-label="Paràgraf 3">[P3]</span>
+              La tasca va ser <span class="vocab-word" title="Titànica: d'una dificultat i esforç extraordinaris, gegantina">titànica</span>. En Nicholas va haver de convèncer les autoritats perquè concedissin els <span class="vocab-word" title="Visat: permís oficial per entrar i viure legalment en un país">visats</span>, trobar famílies d'acollida britàniques disposades a obrir les portes de casa seva i aconseguir els diners necessaris per pagar els bitllets de tren. Entre el març i l'agost de 1939, va aconseguir organitzar vuit trens —coneguts com els combois del <em>Kindertransport</em>— que van recórrer milers de quilòmetres fins a arribar a l'estació de Liverpool Street, a Londres. Gràcies a aquest esforç, 669 nens i nenes van salvar la vida abans de l'inici dels combats.
+            </p>
+
+            <p id="para-4">
+              <span class="para-tag" aria-label="Paràgraf 4">[P4]</span>
+              El fet més sorprenent d'aquesta història és que en Nicholas Winton no va presumir mai de la seva acció. Durant cinquanta anys, no en va parlar amb ningú, convençut que només havia complert amb el seu deure com a ésser humà. Va ser la seva dona, Grete, qui el 1988 va trobar a les golfes de casa un vell quadern amb els noms i fotografies de tots els infants salvats. La història de Winton ens recorda que, fins i tot en els períodes més dolorosos de la història com la Segona Guerra Mundial, l'empatia i la <span class="vocab-word" title="Solidaritat: ajuda mútua i compromís amb les persones que pateixen">solidaritat</span> són capaces d'il·luminar la foscor.
+            </p>
+          </div>
+        </article>
+
+        <!-- COLUMNA 2: QÜESTIONARI AUTOCORRECTIU -->
+        <section class="quiz-panel" aria-label="Preguntes de comprensió lectora">
+          
+          <!-- Progrés -->
+          <div class="progress-section">
+            <div class="progress-info">
+              <span id="progress-question-text">Pregunta 1 de 6</span>
+              <span id="progress-percentage-text">16% completat</span>
+            </div>
+            <div class="progress-track" role="progressbar" id="quiz-progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-fill" id="progressbar-fill" style="width: 16%;"></div>
+            </div>
+          </div>
+
+          <!-- Bastides cognitives DUA per a la pregunta -->
+          <div class="scaffold-toolbar">
+            <button type="button" class="scaffold-btn" id="btn-speak-question" title="Escoltar la pregunta en veu alta">
+              <span aria-hidden="true">🔊</span> Escoltar pregunta
+            </button>
+            <button type="button" class="scaffold-btn" id="btn-toggle-hint" aria-expanded="false" aria-controls="hint-box" title="Veure una pista d'ajuda per respondre">
+              <span aria-hidden="true">💡</span> Pista d'ajuda (DUA)
+            </button>
+          </div>
+
+          <!-- Caixa de pista desplegable -->
+          <div id="hint-box" class="hint-box hidden" role="region" aria-label="Pista d'ajuda per a la lectura">
+            <h4 style="margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span aria-hidden="true">💡</span> On puc trobar la informació?
+            </h4>
+            <p id="hint-content">Pista de la pregunta...</p>
+          </div>
+
+          <!-- Formulari de la pregunta -->
+          <form id="quiz-form" onsubmit="return false;">
+            <fieldset>
+              <legend class="question-legend">
+                <span class="question-type-badge" id="question-competence-badge">Comprensió literal</span>
+                <span class="question-title" id="question-text">Enunciat de la pregunta...</span>
+              </legend>
+
+              <div class="options-list" id="options-container" role="radiogroup">
+                <!-- Generat dinàmicament -->
+              </div>
+            </fieldset>
+
+            <button type="button" id="btn-validate" class="btn-primary-action" disabled>
+              <span aria-hidden="true">✓</span> Comprova la resposta
+            </button>
+          </form>
+
+          <!-- Retroacció explicativa detallada -->
+          <div id="feedback-region" class="feedback-box hidden" role="region" aria-live="polite">
+            <h3 class="feedback-header" id="feedback-title">
+              <span id="feedback-icon" aria-hidden="true"></span>
+              <span id="feedback-title-text"></span>
+            </h3>
+            <div class="feedback-text" id="feedback-explanation">
+              <!-- Explicació de l'encert o de l'error -->
+            </div>
+
+            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" id="btn-retry" class="btn-secondary hidden">
+                <span aria-hidden="true">🔄</span> Reintentar la pregunta
+              </button>
+              <button type="button" id="btn-next" class="btn-primary-action">
+                Següent pregunta <span aria-hidden="true">➔</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- ==========================================
+           PANTALLA 3: INFORME I DIPLOMA FINAL
+           ========================================== -->
+      <section id="screen-report" class="card report-card hidden" aria-labelledby="report-title">
+        <div class="diploma-frame">
+          <span style="font-size: 1.8rem;" aria-hidden="true">🎖️</span>
+          <h2 id="report-title" style="color: var(--color-primary); font-size: 1.85rem; margin: 0.5rem 0;">
+            Diploma d'Aprofitament Lector
+          </h2>
+          <p style="font-size: 1.15rem; color: var(--color-text-muted);">
+            Certificat atorgat a l'alumne/a:
+          </p>
+          <p style="font-size: 1.7rem; font-weight: 900; color: var(--color-primary); margin: 0.4rem 0;" id="report-student-name">
+            Nom de l'Alumne
+          </p>
+          <p style="font-size: 1rem; color: var(--color-text-muted);" id="report-student-group">
+            Curs: 5è A · Àrea de Llengua Catalana
+          </p>
+
+          <div class="score-badge" id="report-score-display">
+            6 / 6
+          </div>
+          <p id="report-message" style="font-weight: 700; font-size: 1.15rem; color: var(--color-success-text); margin-bottom: 1.5rem;">
+            Enhorabona! Has demostrat una comprensió lectora excel·lent!
+          </p>
+
+          <!-- Desglossament de competències lectores -->
+          <div style="text-align: left; background-color: var(--color-bg); padding: 1.25rem; border-radius: var(--radius-md); border: 1.5px solid var(--color-border-light); margin-bottom: 1.5rem;">
+            <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 0.75rem;">
+              📊 Assoliment de les dimensions de comprensió lectora:
+            </h3>
+            <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+              <li><strong>Localització d'informació (Literal):</strong> Cerca de dades concretes als paràgrafs.</li>
+              <li><strong>Inferència i vocabulari en context:</strong> Deducció del sentit figurat d'adjectius i motivacions.</li>
+              <li><strong>Estructura i seqüència temporal:</strong> Comprensió de l'ordre cronològic dels fets.</li>
+              <li><strong>Valoració crítica i moral:</strong> Reflexió sobre els valors de pau i solidaritat.</li>
+            </ul>
+          </div>
+
+          <h3 style="text-align: left; font-size: 1.15rem; margin-bottom: 0.85rem; color: var(--color-text);">
+            Revisió de les respostes realitzades:
+          </h3>
+          <div id="report-review-list">
+            <!-- Llista de preguntes i explicacions -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <button type="button" onclick="window.print();" class="btn-primary-action" style="width: auto;">
+            <span aria-hidden="true">🖨️</span> Imprimeix o desa el teu diploma (PDF)
+          </button>
+          <button type="button" id="btn-restart" class="btn-secondary">
+            <span aria-hidden="true">🔄</span> Fes una nova lectura
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       MODAL: GLOSSARI DE VOCABULARI (DUA)
+       ========================================== -->
+  <div id="modal-glossary" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="glossary-title">
+    <div class="modal-dialog">
+      <header class="modal-header">
+        <h2 id="glossary-title" style="font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span aria-hidden="true">📚</span> Diccionari de paraules del text
+        </h2>
+        <button type="button" class="modal-close-btn" id="btn-close-glossary" aria-label="Tanca el diccionari">&times;</button>
+      </header>
+      <div class="modal-body">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.5rem;">
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Persecució:</strong>
+            <p style="font-size: 0.95rem; margin-top: 0.2rem;">Acció d'assetjar, maltractar o castigar persones o col·lectius de manera injusta per motius del seu origen, religió o idees.</p>
+          </div>
+          <div style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.5rem;">
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Evacuar:</strong>
+            <p style="font-size: 0.95rem; margin-top: 0.2rem;">Traslladar persones des d'una zona perillosa o amenaçada cap a un lloc segur.</p>
+          </div>
+          <div style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.5rem;">
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Titànica:</strong>
+            <p style="font-size: 0.95rem; margin-top: 0.2rem;">Expressió que fa referència a una tasca gegantina, d'una gran dificultat i que exigeix un esforç extraordinari.</p>
+          </div>
+          <div style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.5rem;">
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Visat:</strong>
+            <p style="font-size: 0.95rem; margin-top: 0.2rem;">Document o segell oficial que autoritza una persona estrangera a entrar i residir legalment en un país.</p>
+          </div>
+          <div>
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Solidaritat:</strong>
+            <p style="font-size: 0.95rem; margin-top: 0.2rem;">Actitud d'ajuda desinteressada, suport mutu i compromís amb les persones que pateixen o es troben en situació vulnerable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEU DE PÀGINA -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h3 class="footer-heading">Comprensió Lectora i Valors Humans</h3>
+          <p style="color: #cbd5e1; margin-bottom: 0.5rem;">
+            Recurs didàctic d'accés lliure per a la competència comunicativa i lingüística a Primària en el marc de l'educació per a la pau i la memòria històrica.
+          </p>
+          <p style="color: #94a3b8; font-size: 0.82rem;">
+            Protecció de dades certificada: registre d'aula sense recollida de dades personals identificables (sense cognoms, correu ni contrasenyes) emmagatzemat exclusivament en l'àmbit local del dispositiu escolar.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Transparència i Ús d'IA</h3>
+          <div class="transparency-box">
+            <strong>Nota de transparència docent:</strong> Recurs generat amb assistència d'Intel·ligència Artificial i estructurat sota criteris de comprensió lectora, accessibilitat universal (WCAG 2.1 AA) i DUA. Recomanat per a la revisió i adaptació del mestre/a a la realitat del seu grup aula.
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; border-top: 1px solid #334155; padding-top: 1rem; font-size: 0.82rem; color: #94a3b8;">
+        Projecte web d'una sola pàgina sense dependències externes. Llest per provar en local i allotjar a GitHub Pages.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       LÒGICA JAVASCRIPT: AUTÒNOMA, ACCESSIBLE I PEDAGÒGICA
+       ========================================================================== */ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ==========================================================================
+         1. BASE DE DADES DE PREGUNTES DE COMPRENSIÓ LECTORA
+         ========================================================================== */
+      const questionsData = [
+        {
+          id: 1,
+          competence: "Comprensió literal (Localització d'informació)",
+          question: "Quina decisió va prendre Nicholas Winton quan va comprovar la situació dels infants als camps de refugiats de Praga l'hivern de 1938?",
+          options: [
+            { text: "Va continuar amb el seu pla inicial de vacances d'esquí a Suïssa.", correct: false, whyWrong: "El text explica que precisament va cancel·lar les seves vacances per ajudar." },
+            { text: "Va organitzar una xarxa des d'un hotel per evacuar infants cap a la Gran Bretanya.", correct: true },
+            { text: "Va demanar a les autoritats que tanquessin immediatament les estacions de tren.", correct: false, whyWrong: "Winton no volia tancar estacions, sinó aconseguir trens per treure els infants del perill." },
+            { text: "Va escriure un llibre de memòries i el va publicar immediatament a Londres.", correct: false, whyWrong: "No va escriure cap llibre en aquell moment; va actuar d'urgència per salvar vides." }
+          ],
+          hint: "Revisa el paràgraf 2 [P2]: fixa't en què va fer en Nicholas en veure el fred i la fam dels infants a Praga.",
+          explanation: "Molt bé! Al paràgraf 2 es diu textualment que, des de l'habitació d'un hotel, va començar a organitzar una xarxa per evacuar el màxim nombre possible de criatures cap a la Gran Bretanya."
+        },
+        {
+          id: 2,
+          competence: "Lèxic i vocabulari en context",
+          question: "En el paràgraf 3, el text assenyala que la tasca de Winton 'va ser titànica'. Quin és el significat d'aquesta paraula en aquest context?",
+          options: [
+            { text: "Que va ser una feina relacionada amb vaixells i navegació oceànica.", correct: false, whyWrong: "Tot i la semblança amb el vaixell 'Titanic', la paraula s'utilitza aquí en sentit figurat per descriure la dificultat." },
+            { text: "Que va ser una tasca d'una dificultat i un esforç extraordinaris.", correct: true },
+            { text: "Que va ser un encàrrec ràpid, senzill i sense complicacions burocràtiques.", correct: false, whyWrong: "Tot el contrari: aconseguir visats, diners i acollida va ser extremadament complicat." },
+            { text: "Que la va portar a terme un grup d'esportistes molt forts físicament.", correct: false, whyWrong: "No fa referència a la musculatura de ningú, sinó a la grandesa i complexitat de la feina." }
+          ],
+          hint: "Observa la llista de dificultats que es descriuen tot seguit al paràgraf 3 [P3]: convèncer autoritats, trobar diners, buscar famílies d'acollida...",
+          explanation: "Exacte! L'adjectiu 'titànic' prové dels Titans de la mitologia clàssica i s'utilitza per indicar una feina colossal, gegantina i plena d'obstacles superats."
+        },
+        {
+          id: 3,
+          competence: "Comprensió inferencial (Causes i motivacions)",
+          question: "Per quina raó principal Nicholas Winton va mantenir en secret la seva gesta durant cinquanta anys?",
+          options: [
+            { text: "Perquè tenia por que la policia el castigués per haver organitzat els viatges.", correct: false, whyWrong: "Els viatges es van fer amb visats legals i acollida reglamentària." },
+            { text: "Perquè va oblidar completament on havia guardat el quadern amb els noms.", correct: false, whyWrong: "El quadern estava desat a les golfes, però el motiu del silenci va ser la seva modèstia." },
+            { text: "Perquè considerava amb modèstia que només havia complert amb el seu deure com a ésser humà.", correct: true },
+            { text: "Perquè cap dels infants no volia que se sabés qui els havia ajudat.", correct: false, whyWrong: "Els infants, en créixer, van expressar un agraïment infinit quan es va descobrir la veritat." }
+          ],
+          hint: "Llegeix amb atenció el paràgraf 4 [P4]: fixa't en la frase 'convençut que només havia complert amb el seu deure com a ésser humà'.",
+          explanation: "Excel·lent reflexió! Winton no buscava medalles ni reconeixement públic; per a ell, salvar la vida d'aquells nens era simplement allò que qualsevol persona amb consciència moral havia de fer."
+        },
+        {
+          id: 4,
+          competence: "Seqüència cronològica i estructura",
+          question: "Quina d'aquestes línies de temps descriu correctament l'ordre en què van tenir lloc els fets del text?",
+          options: [
+            { text: "La dona troba el quadern ➔ Winton viatja a Praga ➔ Surten els vuit trens cap a Londres.", correct: false, whyWrong: "La troballa del quadern va passar molt després, cinquanta anys més tard (1988)." },
+            { text: "Winton viatja a Praga (1938) ➔ Organitza els vuit trens (1939) ➔ La seva dona descobreix el quadern a les golfes (1988).", correct: true },
+            { text: "Esclata la guerra ➔ Winton se'n va a esquiar a Suïssa ➔ Arriba el primer tren a Londres.", correct: false, whyWrong: "Winton va cancel·lar el viatge d'esquí i els trens van arribar abans que comencés la guerra el setembre de 1939." },
+            { text: "Trobada del quadern ➔ Demana visats a les autoritats ➔ Arriben 669 infants a Londres.", correct: false, whyWrong: "L'arribada dels infants va ocórrer el 1939, dècades abans de trobar el quadern." }
+          ],
+          hint: "Fes un seguiment de les dates clau esmentades al text: hivern de 1938 [P2], març-agost de 1939 [P3] i 1988 [P4].",
+          explanation: "Molt bona visió cronològica! L'ordre temporal és clar: primer el viatge de 1938 a Praga, després els trens del Kindertransport el 1939, i finalment el descobriment del quadern l'any 1988."
+        },
+        {
+          id: 5,
+          competence: "Comprensió literal i numèrica",
+          question: "Quants infants van aconseguir salvar la vida gràcies als vuit combois de tren organitzats per Winton?",
+          options: [
+            { text: "Exactament 50 infants.", correct: false, whyWrong: "50 van ser els anys que Winton va mantenir la història en secret." },
+            { text: "29 nens i nenes.", correct: false, whyWrong: "29 era l'edat que tenia Nicholas Winton l'any 1938." },
+            { text: "669 nens i nenes.", correct: true },
+            { text: "1.939 infants.", correct: false, whyWrong: "1939 va ser l'any en què van viatjar els trens i va esclatar la guerra." }
+          ],
+          hint: "Trobaràs la xifra exacta al final del paràgraf 3 [P3], just després de parlar de l'estació de Liverpool Street a Londres.",
+          explanation: "Correcte! Van ser 669 criatures. Gràcies a aquest rescat, avui hi ha milers de fills, filles i nets d'aquells infants que viuen arreu del món."
+        },
+        {
+          id: 6,
+          competence: "Comprensió crítica i valors ètics",
+          question: "Quin és el missatge principal que transmet aquest relat sobre la memòria històrica de la Segona Guerra Mundial?",
+          options: [
+            { text: "Que en una guerra les persones individuals no tenen cap poder per canviar les coses.", correct: false, whyWrong: "La història de Winton demostra justament el contrari: l'impacte enorme del compromís individual." },
+            { text: "Que el coratge individual, l'empatia i la solidaritat poden salvar vides fins i tot en els moments més foscos.", correct: true },
+            { text: "Que l'única solució als conflictes és que tothom marxi de vacances a esquiar.", correct: false, whyWrong: "Aquesta opció és absurda en relació amb el missatge de solidaritat del text." },
+            { text: "Que el millor és oblidar la història i no parlar mai més del passat.", correct: false, whyWrong: "La memòria històrica serveix per recordar els herois quotidians i no repetir els errors del passat." }
+          ],
+          hint: "Rellegeix la reflexió final del paràgraf 4 [P4]: 'l'empatia i la solidaritat són capaces d'il·luminar la foscor'.",
+          explanation: "Excel·lent valoració! La gran lliçó de Nicholas Winton és que cadascun de nosaltres, amb determinació i empatia, té la capacitat d'ajudar els altres i oposar-se a la injustícia."
+        }
+      ];
+
+      /* ==========================================================================
+         2. GESTIÓ DE L'ESTAT DE L'APLICACIÓ (LOCAL I VOLÀTIL)
+         ========================================================================== */
+      let studentData = {
+        name: "",
+        group: ""
+      };
+      let currentQuestionIndex = 0;
+      let userResponses = [];
+      let currentSelection = null;
+      let isAnswerValidated = false;
+
+      // Elements DOM
+      const screenRegister = document.getElementById('screen-register');
+      const screenActivity = document.getElementById('screen-activity');
+      const screenReport = document.getElementById('screen-report');
+      const sessionDisplay = document.getElementById('session-display');
+      const studentNameBadge = document.getElementById('student-name-badge');
+      const studentGroupBadge = document.getElementById('student-group-badge');
+
+      const formRegister = document.getElementById('form-register');
+      const inputStudentName = document.getElementById('input-student-name');
+      const selectStudentGroup = document.getElementById('select-student-group');
+
+      const progressQuestionText = document.getElementById('progress-question-text');
+      const progressPercentageText = document.getElementById('progress-percentage-text');
+      const progressbarFill = document.getElementById('progressbar-fill');
+      const quizProgressbar = document.getElementById('quiz-progressbar');
+
+      const btnSpeakQuestion = document.getElementById('btn-speak-question');
+      const btnToggleHint = document.getElementById('btn-toggle-hint');
+      const hintBox = document.getElementById('hint-box');
+      const hintContent = document.getElementById('hint-content');
+
+      const questionCompetenceBadge = document.getElementById('question-competence-badge');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+
+      const btnValidate = document.getElementById('btn-validate');
+      const feedbackRegion = document.getElementById('feedback-region');
+      const feedbackIcon = document.getElementById('feedback-icon');
+      const feedbackTitleText = document.getElementById('feedback-title-text');
+      const feedbackExplanation = document.getElementById('feedback-explanation');
+      const btnRetry = document.getElementById('btn-retry');
+      const btnNext = document.getElementById('btn-next');
+
+      const btnReadTextAloud = document.getElementById('btn-read-text-aloud');
+
+      // Modal vocabulari
+      const modalGlossary = document.getElementById('modal-glossary');
+      const btnOpenGlossary = document.getElementById('btn-open-glossary');
+      const btnCloseGlossary = document.getElementById('btn-close-glossary');
+
+      // Eines DUA
+      const btnFontNormal = document.getElementById('btn-font-normal');
+      const btnFontLarge = document.getElementById('btn-font-large');
+      const btnFontXLarge = document.getElementById('btn-font-xlarge');
+      const btnToggleFont = document.getElementById('btn-toggle-font');
+      const btnToggleContrast = document.getElementById('btn-toggle-contrast');
+
+      // Elements informe
+      const reportStudentName = document.getElementById('report-student-name');
+      const reportStudentGroup = document.getElementById('report-student-group');
+      const reportScoreDisplay = document.getElementById('report-score-display');
+      const reportMessage = document.getElementById('report-message');
+      const reportReviewList = document.getElementById('report-review-list');
+      const btnRestart = document.getElementById('btn-restart');
+
+      /* ==========================================================================
+         3. ACCESSIBILITAT I PERSONALITZACIÓ VISUAL (DUA)
+         ========================================================================== */
+      function setFontSize(scale, activeBtn) {
+        document.documentElement.style.setProperty('--font-scale', scale);
+        [btnFontNormal, btnFontLarge, btnFontXLarge].forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+        activeBtn.setAttribute('aria-pressed', 'true');
+      }
+
+      btnFontNormal.addEventListener('click', () => setFontSize(1, btnFontNormal));
+      btnFontLarge.addEventListener('click', () => setFontSize(1.15, btnFontLarge));
+      btnFontXLarge.addEventListener('click', () => setFontSize(1.3, btnFontXLarge));
+
+      btnToggleFont.addEventListener('click', () => {
+        const isAccessible = document.body.classList.toggle('font-accessible');
+        btnToggleFont.setAttribute('aria-pressed', isAccessible ? 'true' : 'false');
+      });
+
+      btnToggleContrast.addEventListener('click', () => {
+        const isHigh = document.body.classList.toggle('high-contrast');
+        btnToggleContrast.setAttribute('aria-pressed', isHigh ? 'true' : 'false');
+      });
+
+      /* ==========================================================================
+         4. SÍNTESI DE VEU (SUPORT AUDITIU / DUA)
+         ========================================================================== */
+      function speakText(text) {
+        if (!('speechSynthesis' in window)) {
+          alert("El teu navegador no disposa de síntesi de veu activada.");
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ca-ES';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      btnSpeakQuestion.addEventListener('click', () => {
+        const q = questionsData[currentQuestionIndex];
+        let speech = q.question + ". Les opcions són: ";
+        q.options.forEach((opt, idx) => {
+          speech += " Opció " + String.fromCharCode(65 + idx) + ": " + opt.text + ".";
+        });
+        speakText(speech);
+      });
+
+      btnReadTextAloud.addEventListener('click', () => {
+        const fullText = "Els trens de la llibertat. " +
+          document.getElementById('para-1').innerText + " " +
+          document.getElementById('para-2').innerText + " " +
+          document.getElementById('para-3').innerText + " " +
+          document.getElementById('para-4').innerText;
+        speakText(fullText);
+      });
+
+      /* ==========================================================================
+         5. MODAL DE VOCABULARI AMB CONTROL DE FOCUS
+         ========================================================================== */
+      let lastFocused = null;
+      function openGlossary() {
+        lastFocused = document.activeElement;
+        modalGlossary.classList.remove('hidden');
+        btnCloseGlossary.focus();
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeGlossary() {
+        modalGlossary.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      btnOpenGlossary.addEventListener('click', openGlossary);
+      btnCloseGlossary.addEventListener('click', closeGlossary);
+      modalGlossary.addEventListener('click', (e) => {
+        if (e.target === modalGlossary) closeGlossary();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modalGlossary.classList.contains('hidden')) {
+          closeGlossary();
+        }
+      });
+
+      /* ==========================================================================
+         6. REGISTRE D'AULA SEGUR (PRIVACY-BY-DESIGN)
+         ========================================================================== */
+      formRegister.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameVal = inputStudentName.value.trim();
+        const groupVal = selectStudentGroup.value;
+
+        if (!nameVal || !groupVal) {
+          alert("Si us plau, introdueix el teu nom o àlies i selecciona el teu grup classe.");
+          return;
+        }
+
+        studentData.name = nameVal;
+        studentData.group = groupVal;
+
+        // Mostrar identificació a la capçalera
+        studentNameBadge.textContent = studentData.name;
+        studentGroupBadge.textContent = studentData.group;
+        sessionDisplay.classList.remove('hidden');
+
+        // Canviar de pantalla
+        screenRegister.classList.add('hidden');
+        screenActivity.classList.remove('hidden');
+        currentQuestionIndex = 0;
+        userResponses = [];
+        renderQuestion(currentQuestionIndex);
+        document.getElementById('main-content').focus();
+      });
+
+      /* ==========================================================================
+         7. FLUX DEL QÜESTIONARI AUTOCORRECTIU
+         ========================================================================== */
+      function renderQuestion(index) {
+        const q = questionsData[index];
+        currentSelection = null;
+        isAnswerValidated = false;
+
+        // Progrés accessible
+        const total = questionsData.length;
+        const currentNum = index + 1;
+        const percent = Math.round((currentNum / total) * 100);
+
+        progressQuestionText.textContent = `Pregunta ${currentNum} de ${total}`;
+        progressPercentageText.textContent = `${percent}% completat`;
+        progressbarFill.style.width = `${percent}%`;
+        quizProgressbar.setAttribute('aria-valuenow', percent);
+
+        // Text de la pregunta
+        questionCompetenceBadge.textContent = q.competence;
+        questionText.textContent = q.question;
+
+        // Pista DUA inicialment tancada
+        hintBox.classList.add('hidden');
+        btnToggleHint.setAttribute('aria-expanded', 'false');
+        hintContent.textContent = q.hint;
+
+        // Reset feedback
+        feedbackRegion.classList.add('hidden');
+        feedbackRegion.className = 'feedback-box hidden';
+        btnValidate.disabled = true;
+        btnValidate.classList.remove('hidden');
+
+        // Opcions
+        optionsContainer.innerHTML = '';
+        q.options.forEach((opt, optIdx) => {
+          const letter = String.fromCharCode(65 + optIdx);
+          const optionDiv = document.createElement('div');
+          optionDiv.className = 'option-item';
+
+          const radioId = `opt-${index}-${optIdx}`;
+          optionDiv.innerHTML = `
+            <input type="radio" name="quiz-radio" id="${radioId}" value="${optIdx}" class="option-input">
+            <label for="${radioId}" class="option-label" id="label-${radioId}">
+              <span class="option-letter" aria-hidden="true">${letter}</span>
+              <span class="option-text">${opt.text}</span>
+            </label>
+          `;
+
+          const radio = optionDiv.querySelector('input');
+          radio.addEventListener('change', () => {
+            if (isAnswerValidated) return;
+            currentSelection = parseInt(radio.value, 10);
+            btnValidate.disabled = false;
+          });
+
+          optionsContainer.appendChild(optionDiv);
+        });
+
+        questionText.setAttribute('tabindex', '-1');
+        questionText.focus();
+      }
+
+      // Desplegable de pista DUA
+      btnToggleHint.addEventListener('click', () => {
+        const isHidden = hintBox.classList.contains('hidden');
+        if (isHidden) {
+          hintBox.classList.remove('hidden');
+          btnToggleHint.setAttribute('aria-expanded', 'true');
+        } else {
+          hintBox.classList.add('hidden');
+          btnToggleHint.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Validació de resposta
+      btnValidate.addEventListener('click', () => {
+        if (currentSelection === null || isAnswerValidated) return;
+
+        isAnswerValidated = true;
+        btnValidate.disabled = true;
+        btnValidate.classList.add('hidden');
+
+        const q = questionsData[currentQuestionIndex];
+        const selected = q.options[currentSelection];
+        const isCorrect = selected.correct;
+
+        // Desactivar ràdios
+        optionsContainer.querySelectorAll('input').forEach(input => input.disabled = true);
+
+        // Estils d'èxit i error reforçats per text i icona
+        q.options.forEach((opt, idx) => {
+          const radioId = `opt-${currentQuestionIndex}-${idx}`;
+          const label = document.getElementById(`label-${radioId}`);
+          const letter = label.querySelector('.option-letter');
+
+          if (opt.correct) {
+            label.classList.add('is-correct');
+            letter.innerHTML = '✓';
+            letter.setAttribute('aria-label', 'Opció correcta');
+          } else if (idx === currentSelection) {
+            label.classList.add('is-incorrect');
+            letter.innerHTML = '✕';
+            letter.setAttribute('aria-label', 'Opció que has triat, incorrecta');
+          }
+        });
+
+        // Registrar resposta
+        userResponses.push({
+          questionId: q.id,
+          competence: q.competence,
+          questionText: q.question,
+          isCorrect: isCorrect,
+          userAnswer: selected.text,
+          correctAnswer: q.options.find(o => o.correct).text,
+          explanation: q.explanation
+        });
+
+        // Mostrar feedback
+        feedbackRegion.classList.remove('hidden');
+        if (isCorrect) {
+          feedbackRegion.className = 'feedback-box correct';
+          feedbackIcon.textContent = '🎉';
+          feedbackTitleText.textContent = 'Molt bé! Resposta encertada';
+          feedbackExplanation.innerHTML = `<p>${q.explanation}</p>`;
+          btnRetry.classList.add('hidden');
+        } else {
+          feedbackRegion.className = 'feedback-box incorrect';
+          feedbackIcon.textContent = '🧐';
+          feedbackTitleText.textContent = 'Atenció: Cal revisar aquesta resposta';
+          const wrongReason = selected.whyWrong || "Aquesta no és l'opció correcta segons el text.";
+          feedbackExplanation.innerHTML = `
+            <p><strong>Per què cal revisar?</strong> ${wrongReason}</p>
+            <p><strong>La resposta correcta és:</strong> ${q.options.find(o => o.correct).text}.</p>
+            <p>${q.explanation}</p>
+          `;
+          btnRetry.classList.remove('hidden');
+        }
+
+        if (currentQuestionIndex === questionsData.length - 1) {
+          btnNext.innerHTML = 'Veure el diploma i informe final <span aria-hidden="true">🏁</span>';
+        } else {
+          btnNext.innerHTML = 'Següent pregunta <span aria-hidden="true">➔</span>';
+        }
+
+        feedbackRegion.focus();
+      });
+
+      // Reintent DUA
+      btnRetry.addEventListener('click', () => {
+        userResponses.pop();
+        renderQuestion(currentQuestionIndex);
+      });
+
+      // Següent pregunta
+      btnNext.addEventListener('click', () => {
+        if (currentQuestionIndex < questionsData.length - 1) {
+          currentQuestionIndex++;
+          renderQuestion(currentQuestionIndex);
+        } else {
+          showReportScreen();
+        }
+      });
+
+      /* ==========================================================================
+         8. INFORME D'APRENENTATGE I DIPLOMA FINAL
+         ========================================================================== */
+      function showReportScreen() {
+        screenActivity.classList.add('hidden');
+        screenReport.classList.remove('hidden');
+
+        const total = questionsData.length;
+        const correctCount = userResponses.filter(r => r.isCorrect).length;
+
+        reportStudentName.textContent = studentData.name;
+        reportStudentGroup.textContent = `Curs: ${studentData.group} · Àrea de Llengua Catalana`;
+        reportScoreDisplay.textContent = `${correctCount} / ${total}`;
+
+        if (correctCount === total) {
+          reportMessage.textContent = "🌟 Excel·lent! Has assolit el màxim nivell de comprensió lectora!";
+          reportMessage.style.color = "var(--color-success-text)";
+        } else if (correctCount >= 4) {
+          reportMessage.textContent = "👏 Molt bona feina! Has comprès els fets i les idees principals del text!";
+          reportMessage.style.color = "var(--color-primary)";
+        } else {
+          reportMessage.textContent = "💪 Bon intent! Revisa les explicacions a sota per continuar millorant la teva lectura!";
+          reportMessage.style.color = "var(--color-hint-text)";
+        }
+
+        // Llista detallada de revisió
+        reportReviewList.innerHTML = '';
+        userResponses.forEach((res, idx) => {
+          const item = document.createElement('div');
+          item.className = 'review-item';
+
+          const icon = res.isCorrect ? '✅' : '❌';
+          const status = res.isCorrect ? 'Correcte' : 'A revisar';
+
+          item.innerHTML = `
+            <h4>
+              <span><strong>${idx + 1}.</strong> ${res.questionText}</span>
+              <span style="white-space: nowrap;">${icon} ${status}</span>
+            </h4>
+            <p style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.3rem;">
+              ${res.competence}
+            </p>
+            <p style="font-size: 0.95rem; margin-bottom: 0.25rem;">
+              <strong>La teva resposta:</strong> ${res.userAnswer} ${res.isCorrect ? '' : `<em>(La correcta era: ${res.correctAnswer})</em>`}
+            </p>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+              ${res.explanation}
+            </p>
+          `;
+          reportReviewList.appendChild(item);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Reiniciar activitat
+      btnRestart.addEventListener('click', () => {
+        screenReport.classList.add('hidden');
+        screenRegister.classList.remove('hidden');
+        inputStudentName.value = '';
+        selectStudentGroup.selectedIndex = 0;
+        sessionDisplay.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+    })();
+  </script>
+</body>
+</html>
